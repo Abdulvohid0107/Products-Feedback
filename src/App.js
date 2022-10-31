@@ -5,6 +5,7 @@ import { Container } from "./components/container/container";
 import { FeedbackHeader } from "./components/feedback-header/feedback-header";
 import { FeedbackRoadmap } from "./components/feedbacks-roadmap/feedback-roadmap";
 import { FeedbackSection } from "./components/feedbacks-section/feedback-section";
+import { Feedbacks } from "./components/feedbacks/feedbacks";
 import { Intro } from "./components/intro/intro";
 import { Roadmap } from "./components/roadmap/roadmap";
 import { TypesFilter } from "./components/types-filter/types-filter";
@@ -26,6 +27,7 @@ function App() {
         <FeedbackHeader>
           <Button></Button>
         </FeedbackHeader>
+        <Feedbacks></Feedbacks>
       </FeedbackSection>
     </Wrapper>
   </Container>

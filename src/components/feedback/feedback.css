@@ -1,0 +1,26 @@
+.feedback{
+  background: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.feedback__like{
+
+}
+
+.feedback__content-wrapper{
+  display: flex;
+}
+
+.feedback__item-title{
+}
+
+.feedback__reason{
+}
+
+.feedback__type{
+}
+
+.feedback__comment{
+}
