@@ -1,8 +1,8 @@
 import "./intro.css"
 
-export const Intro = ({children, introText, introBoard, className = ""}) => {
+export const Intro = ({children, className = ""}) => {
   return <div className={"intro " + className}> {children}
-    <p className="intro__mentor">{introText}</p>
-    <p className="intro__board">{introBoard}</p>
+    <h2 className="intro__mentor">Frontend Mentor</h2>
+    <p className="intro__board">Feedback Board</p>
   </div>
 }

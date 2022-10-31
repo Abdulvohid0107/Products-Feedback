@@ -1,13 +1,14 @@
-types__list{
+.types__list{
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  column-gap: 14px  ;
 }
 
-types__item{
+.types__item{
   background: #F2F4FF;
   border-radius: 10px;
   padding: 6px 15px;
@@ -15,4 +16,14 @@ types__item{
   font-size: 13px;
   line-height: 19px;
   color: #4661E6;
+  transition: 0.3s ease all;
+}
+
+.types__item:hover{
+  background: #4661E6;
+  color: #FFFFFF;
+}
+
+.types__item--enhancement{
+  margin-right: 14px;
 }
