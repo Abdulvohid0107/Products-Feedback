@@ -1,0 +1,18 @@
+types__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+types__item{
+  background: #F2F4FF;
+  border-radius: 10px;
+  padding: 6px 15px;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+  color: #4661E6;
+}
