@@ -5,6 +5,11 @@
   margin-bottom: 24px;
   max-width: 255px;
   box-sizing: border-box;
+  transition: 0.3s ease all;
+}
+
+.intro:hover{
+  transform: scale(1.1);
 }
 
 .intro__mentor{

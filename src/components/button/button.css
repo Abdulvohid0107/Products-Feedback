@@ -3,4 +3,13 @@
   background: #AD1FEA;
   border-radius: 10px;
   padding: 12px 24px;
+  color: #F2F4FE;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  transition: 0.3s ease all;
+}
+
+.button:hover{
+  background: #C75AF6;
 }

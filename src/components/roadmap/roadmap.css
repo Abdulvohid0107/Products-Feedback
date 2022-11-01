@@ -29,6 +29,11 @@
   font-size: 13px;
   line-height: 19px;
   text-decoration-line: underline;
+  transition: 0.3s ease all;
+}
+
+.roadmap__view-link:hover{
+  color:#8397F8;
 }
 
 .roadmap__list{

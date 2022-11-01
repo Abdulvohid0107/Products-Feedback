@@ -12,8 +12,8 @@ export const FeedbackHeader = ({children}) => {
           </h3>
         </div>
         <div className="site-header__sort-wrapper">
-          <p className="site-header__sort">Sort by :</p>
-          <h4 className="site-header__sort-title">Most Upvotes</h4>
+          <p className="site-header__sort">Sort by : </p>
+          <h4 className="site-header__sort-title"> Most Upvotes</h4>
         </div>
       </div>
     {children}
