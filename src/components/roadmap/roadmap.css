@@ -83,3 +83,11 @@
 .roadmap__item-number{
   margin: 0;
 }
+
+
+
+@media only screen and (max-width: 700px) {
+  .roadmap{
+    margin-top: 0;
+  }
+}

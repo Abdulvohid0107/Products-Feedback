@@ -1,5 +1,6 @@
 import "./feedback.css";
 import arrowlike from "../../assets/images/arrow-like.svg"
+import { useState } from "react";
 // var clicks = 0;
 
 // function onClick() {
@@ -9,14 +10,14 @@ import arrowlike from "../../assets/images/arrow-like.svg"
 
 export const Feedback = (props) => {
   const {feedback: {likes, feedback, reason, type, comments}} = props
-
+  const [count, setCount] = useState(77)
   return (
     <li className="feedback">
       <div className="feedback__content-wrapper">
-        <button className="feedback__button-like" type="button">
-          {/* <span className="feedback__button-span"></span> */}
+        <button className="feedback__button-like" type="button" onClick={() => setCount(count + 1)}>
+          <span className="feedback__button-span"></span>
           <img src={arrowlike} className="feedback__button-img" alt="" />
-          <span id="clicks">{likes}</span>
+          <span id="clicks" >{count}</span>
         </button>
         <div className="feedback__content">
           <h3 className="feedback__item-title">{feedback}</h3>
@@ -24,7 +25,7 @@ export const Feedback = (props) => {
           <p className="feedback__type">{type}</p>
         </div>
       </div>
-      <p className="feedback__comment">{comments}</p>
+    <p className="feedback__comment">{comments}</p>
     </li>
   )
 }

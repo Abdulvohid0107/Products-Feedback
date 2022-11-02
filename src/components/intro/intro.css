@@ -30,3 +30,28 @@
   mix-blend-mode: normal;
   opacity: 0.75;
 }
+
+
+@media only screen and (max-width: 862px) {
+  .intro{
+    padding-top: 50px;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .intro__mentor{
+    margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+    letter-spacing: -0.25px;
+    color: #FFFFFF;
+  } 
+}
+
+@media only screen and (max-width: 700px) {
+  .intro{
+    margin-bottom: 0;
+  }
+}

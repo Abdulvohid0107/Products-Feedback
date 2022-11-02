@@ -1,8 +1,3 @@
-.image path{
-  fill: red !important;
-}
-
-
 .feedback{
   background: #FFFFFF;
   border-radius: 10px;
@@ -11,6 +6,12 @@
   padding: 28px 32px;
   margin-bottom: 20px;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+.feedback:hover > .feedback__content-wrapper > .feedback__content > .feedback__item-title{
+ transition: 0.3s ease all;
+ color: #4661E6;
 }
 
 .feedback:last-child{
@@ -67,7 +68,6 @@
 .feedback__button-like:active{
   transition: 0.05s ease all;
   background: #4661E6;
-  border-radius: 10px;
 }
 
 .feedback__arrow-like{
@@ -127,4 +127,40 @@
   text-align: center;
   letter-spacing: -0.222222px;
   color: #3A4374;
+  position: relative;
+}
+
+.feedback__comment::before{
+  content: '';
+  display: block;
+  background-image: url("../../assets/images/comment.svg");
+  width: 18px;
+  height: 16px;
+  position: absolute;
+  bottom: 3px;
+  left: -25px;
+}
+
+@media only screen and (max-width: 920px) {
+  .feedback{
+    padding: 25px 30px;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .feedback{
+    padding: 15px 20px;
+  }
+
+  .feedback__item-title{
+    margin: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: -0.25px;
+  }
+
+  .feedback__content{
+    margin-right: 15px;
+  }
 }
