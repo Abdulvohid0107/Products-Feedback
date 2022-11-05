@@ -1,0 +1,16 @@
+
+.user-comment-section{
+  background: #FFFFFF;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.user-comment-section__title{
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.25px;
+  color: #3A4374;
+}

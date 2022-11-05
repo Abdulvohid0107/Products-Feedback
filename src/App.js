@@ -1,36 +1,31 @@
+import { Routes } from "react-router-dom";
 import "./assets/css/main.css"
 import "./assets/css/normalize.css"
-import { Button } from "./components/button/button";
-import { Container } from "./components/container/container";
-import { FeedbackHeader } from "./components/feedback-header/feedback-header";
-import { FeedbackRoadmap } from "./components/feedbacks-roadmap/feedback-roadmap";
-import { FeedbackSection } from "./components/feedbacks-section/feedback-section";
-import { Feedbacks } from "./components/feedbacks/feedbacks";
-import { Intro } from "./components/intro/intro";
-import { Roadmap } from "./components/roadmap/roadmap";
-import { TypesFilter } from "./components/types-filter/types-filter";
-import { Types } from "./components/types/types";
-import { Wrapper } from "./components/wrapper/wrapper";
+// import { JustComment } from "./components/comment/commment";
+// import { FeedBacksPage } from "./pages/feedbacks/feedbacks-page";
 
 function App() {
-  return <Container>
-    <Wrapper>
-      <FeedbackRoadmap>
-        <Intro></Intro>
-        <TypesFilter>
-          <Types></Types>
-        </TypesFilter>
-        <Roadmap></Roadmap>
-      </FeedbackRoadmap>
+  // return <JustComment></JustComment>
+  return <Routes></Routes>
+  // return <FeedBacksPage></FeedBacksPage>
+  // return <Container>
+  //   <Wrapper>
+  //     <FeedbackRoadmap>
+  //       <Intro></Intro>
+  //       <TypesFilter>
+  //         <Types></Types>
+  //       </TypesFilter>
+  //       <Roadmap></Roadmap>
+  //     </FeedbackRoadmap>
 
-      <FeedbackSection>
-        <FeedbackHeader>
-          <Button></Button>
-        </FeedbackHeader>
-        <Feedbacks></Feedbacks>
-      </FeedbackSection>
-    </Wrapper>
-  </Container>
+  //     <FeedbackSection>
+  //       <FeedbackHeader>
+  //         <Button></Button>
+  //       </FeedbackHeader>
+  //       <Feedbacks></Feedbacks>
+  //     </FeedbackSection>
+  //   </Wrapper>
+  // </Container>
 }
 
 export default App;

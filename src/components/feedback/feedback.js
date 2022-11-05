@@ -1,15 +1,10 @@
 import "./feedback.css";
 import arrowlike from "../../assets/images/arrow-like.svg"
 import { useState } from "react";
-// var clicks = 0;
-
-// function onClick() {
-//   clicks += 1;
-//   document.getElementById("clicks").innerHTML = clicks;
-// };
+import { Link } from "react-router-dom";
 
 export const Feedback = (props) => {
-  const {feedback: {likes, feedback, reason, type, comments}} = props
+  const {feedback: {feedback, reason, type, comments, id}} = props
   const [count, setCount] = useState(77)
   return (
     <li className="feedback">
@@ -20,7 +15,7 @@ export const Feedback = (props) => {
           <span id="clicks" >{count}</span>
         </button>
         <div className="feedback__content">
-          <h3 className="feedback__item-title">{feedback}</h3>
+          <Link to={`/comments-page/${id}`} className="feedback__item-title">{feedback}</Link>
           <p className="feedback__reason">{reason}</p>
           <p className="feedback__type">{type}</p>
         </div>
