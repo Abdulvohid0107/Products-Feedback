@@ -25,7 +25,9 @@ export const FeedBacksPage = () => {
 
     <FeedbackSection>
       <FeedbackHeader>
-        <Button></Button>
+        <Button className="button__add" to={"add"}>
+          + Add Feedback
+        </Button>
       </FeedbackHeader>
       <Feedbacks></Feedbacks>
     </FeedbackSection>

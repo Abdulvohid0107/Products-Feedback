@@ -1,0 +1,35 @@
+.go-back__wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.go-back{
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #647196;
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+  
+  &::before{
+    content: '';
+    display: block;
+    background-image: url("../../assets/images/goback.svg");
+    background-repeat: no-repeat;
+    width: 5px;
+    height: 9px;
+    position: absolute;
+    background-size: cover;
+    transform: translateY(50%);
+    left: -20px;
+  }
+  
+  &:hover{
+    transition: 0.5s ease all;
+    text-decoration-line: underline;
+  }
+}

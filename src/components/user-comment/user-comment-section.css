@@ -4,6 +4,7 @@
   border-radius: 10px;
   margin: 0 auto;
   padding: 24px 32px;
+  margin-bottom: 24px;
 }
 
 .user-comment-section__title{
@@ -11,6 +12,7 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 26px;
+  margin-bottom: 28px;
   letter-spacing: -0.25px;
   color: #3A4374;
 }

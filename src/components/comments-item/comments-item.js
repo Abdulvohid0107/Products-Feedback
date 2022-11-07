@@ -1,4 +1,4 @@
-import "./comments-item.css"
+import "./comments-item.scss"
 import Moss from "../../assets/images/moss.png"
 import James from "../../assets/images/james.png"
 import Anne from "../../assets/images/anne.png"

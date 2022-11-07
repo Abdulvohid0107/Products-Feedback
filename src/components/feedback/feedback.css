@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.feedbacks__comments-page{
+  margin-top: 24px;
+}
+
 .feedback:hover > .feedback__content-wrapper > .feedback__content > .feedback__item-title{
  transition: 0.3s ease all;
  color: #4661E6;
@@ -97,6 +101,7 @@
   font-size: 18px;
   line-height: 26px;
   letter-spacing: -0.25px;
+  text-decoration: none;
 }
 
 .feedback__reason{
