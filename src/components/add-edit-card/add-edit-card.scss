@@ -1,0 +1,19 @@
+.add-edit-card{
+  margin-top: 68px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 52px 42px 40px;
+  position: relative;
+}
+
+.add-edit-card__span{
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+}

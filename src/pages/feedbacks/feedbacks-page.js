@@ -1,6 +1,6 @@
 import "../../assets/css/main.css"
 import "../../assets/css/normalize.css"
-import { Button } from "../../components/button/button"
+import { Button } from "../../components/button"
 import { Container } from "../../components/container/container"
 import { FeedbackHeader } from "../../components/feedback-header/feedback-header"
 import { FeedbackRoadmap } from "../../components/feedbacks-roadmap/feedback-roadmap"
