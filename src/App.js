@@ -1,31 +1,19 @@
-import { Routes } from "react-router-dom";
-import "./assets/css/main.css"
-import "./assets/css/normalize.css"
-// import { JustComment } from "./components/comment/commment";
-// import { FeedBacksPage } from "./pages/feedbacks/feedbacks-page";
+import { createContext, useState } from "react";
+
+import "./assets/css/main.css";
+import "./assets/css/normalize.css";
+import { feedbacks } from "./data/feedbacks-data";
+import { Routes } from "./routes/config-routes";
+
+export const NewsContext = createContext();
 
 function App() {
-  // return <JustComment></JustComment>
-  return <Routes></Routes>
-  // return <FeedBacksPage></FeedBacksPage>
-  // return <Container>
-  //   <Wrapper>
-  //     <FeedbackRoadmap>
-  //       <Intro></Intro>
-  //       <TypesFilter>
-  //         <Types></Types>
-  //       </TypesFilter>
-  //       <Roadmap></Roadmap>
-  //     </FeedbackRoadmap>
-
-  //     <FeedbackSection>
-  //       <FeedbackHeader>
-  //         <Button></Button>
-  //       </FeedbackHeader>
-  //       <Feedbacks></Feedbacks>
-  //     </FeedbackSection>
-  //   </Wrapper>
-  // </Container>
+  const [userfeedbacks, setFeedbacks] = useState(feedbacks);
+  return (
+    <NewsContext.Provider value={{ userfeedbacks, setFeedbacks }}>
+      <Routes />
+    </NewsContext.Provider>
+  );
 }
 
 export default App;

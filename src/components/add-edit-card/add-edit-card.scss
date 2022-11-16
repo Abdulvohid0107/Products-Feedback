@@ -6,7 +6,8 @@
   position: relative;
 }
 
-.add-edit-card__span{
+.add-edit-card__span,
+.add-edit-card__span--pencil{
   width: 56px;
   height: 56px;
   background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
@@ -16,4 +17,32 @@
   position: absolute;
   top: 0;
   transform: translateY(-50%);
+}
+
+.add-edit-card__span--pencil{
+  padding: 16px;
+}
+
+.add-edit-card__all-btn-wrapper{
+  margin-top: 32px;
+  margin-left: auto;
+  // display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-edit-card__all-btn-wrapper--edit{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.add-edit-card__button-wrapper{
+  margin-top: 32px;
+  max-width: 253px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -7,9 +7,7 @@ export const TypesFilter = () => {
 
   return <div className="types-filter">
     <ul>
-      <li className="">
-        
-          
+      <li className="">  
           {typesFilter.map(typefilter => <Types typefilter={typefilter}></Types>)}
       </li>
     </ul>

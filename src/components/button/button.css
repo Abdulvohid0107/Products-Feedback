@@ -26,6 +26,29 @@
 .button__add{
   text-decoration: none;
 }
+
+.button__cancel{
+  background: #3A4374;
+  text-decoration: none;
+  transition: 0.3s ease all;
+}
+
+.button__cancel--edit{
+  margin-right: 16px;
+}
+
+.button__cancel:hover{
+  background: #656EA3;
+}
+
+.button__delete{
+  background: #D73737;
+}
+
+.button__delete:hover{
+  background: #E98888;
+}
+
 @media only screen and (max-width: 920px) {
   .button{
     padding: 10px 20px;

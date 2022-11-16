@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 import "./go-back.scss"
 
 
-export const GoBack = ({children}) => {
+export const GoBack = ({children, ...otherlink}) => {
   return <div className="go-back__wrapper">
-    <Link to={"/"} className="go-back">Go Back</Link>
+    <Link {...otherlink} className="go-back">Go Back</Link>
     {children}
   </div>
 }

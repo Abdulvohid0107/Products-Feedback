@@ -18,8 +18,8 @@ export const CommentsPage = () => {
 
   return <Container className="user-comments-container">  
 
-  <GoBack>
-    <Button className="button__edit">Edit Feedback</Button>
+  <GoBack to={"/"}>
+    <Button to={"edit"} className="button__edit">Edit Feedback</Button>
   </GoBack>
 
   <div className="feedback feedbacks__comments-page">
