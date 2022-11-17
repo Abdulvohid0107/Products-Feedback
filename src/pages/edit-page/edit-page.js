@@ -13,7 +13,7 @@ export const EditPage = () => {
   const { id } = useParams();
   const { userfeedbacks, setFeedbacks } = useContext(NewsContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const feedbackRef = useRef();
   const reasonRef = useRef();
@@ -22,13 +22,12 @@ export const EditPage = () => {
     (feedbacksItem) => feedbacksItem.id === +id
   );
 
-  if(!currentFeedbacksItem) return <h1>Hech narsa topilmadi</h1>
+  if (!currentFeedbacksItem) return <h1>Hech narsa topilmadi</h1>;
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     const feedbackValue = feedbackRef.current.value; // shuni destructure qilish kerak
     const reasonValue = reasonRef.current.value;
-
 
     const editingFeedback = {
       id: Math.floor(Math.random() * 1000),
@@ -47,6 +46,20 @@ export const EditPage = () => {
       ...userfeedbacks.slice(0, editingItemIndex),
       editingFeedback,
       ...userfeedbacks.slice(editingItemIndex + 1),
+    ]);
+
+    // deleting the feedbacks
+
+    navigate("/");
+  };
+
+  const handleDeleteClick = () => {
+    const btnIndex = userfeedbacks.findIndex(
+      (feedbacksItem) => feedbacksItem.id === +id
+    );
+    setFeedbacks([
+      ...userfeedbacks.slice(0, btnIndex),
+      ...userfeedbacks.slice(btnIndex + 1),
     ]);
     navigate("/");
   };
@@ -68,7 +81,10 @@ export const EditPage = () => {
             />
             <Input ref={reasonRef} />
             <div className="add-edit-card__all-btn-wrapper--edit">
-              <Button className="button__delete">Delete</Button>
+              {/* <Button className="button__delete">
+                Delete
+              </Button> */}
+              <button  onClick={handleDeleteClick}>delete</button>
               <div className="add-edit-card__button-wrapper--edit">
                 <Button
                   to={"/"}

@@ -1,6 +1,6 @@
 import "./comments-page.css"
 import { useParams } from "react-router-dom"
-import { feedbacks } from "../../data/feedbacks-data";
+// import { feedbacks } from "../../data/feedbacks-data";
 import { Link } from "react-router-dom";
 import arrowlike from "../../assets/images/arrow-like.svg"
 import { Container } from "../../components/container/container";
@@ -9,12 +9,15 @@ import { CommentsItem } from "../../components/comments-item/comments-item";
 import { GoBack } from "../../components/go-back/go-back";
 import { AddComment } from "../../components/add-comment/add-comment";
 import { Button } from "../../components/button/button";
+import { NewsContext } from "../../App";
+import { useContext } from "react";
 
 
 export const CommentsPage = () => {
+  const { userfeedbacks } = useContext(NewsContext);
   const { id } = useParams();
-  const feedbackItem = feedbacks.find((feedbackItem) => feedbackItem.id === +id)
-  // console.log(id);
+  const feedbackItem = userfeedbacks.find((feedbackItem) => feedbackItem.id === +id)
+
 
   return <Container className="user-comments-container">  
 
