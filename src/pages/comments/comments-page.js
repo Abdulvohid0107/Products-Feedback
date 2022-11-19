@@ -9,7 +9,7 @@ import { CommentsItem } from "../../components/comments-item/comments-item";
 import { GoBack } from "../../components/go-back/go-back";
 import { AddComment } from "../../components/add-comment/add-comment";
 import { Button } from "../../components/button/button";
-import { NewsContext } from "../../App";
+import { NewsContext } from "../../auth-app";
 import { useContext } from "react";
 
 

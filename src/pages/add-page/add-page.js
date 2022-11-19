@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { NewsContext } from "../../App";
+import { NewsContext } from "../../auth-app";
 import { Input } from "../../components";
 import { AddEditCard } from "../../components/add-edit-card/add-edit-card";
 import { Button } from "../../components/button";
