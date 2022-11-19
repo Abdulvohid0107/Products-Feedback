@@ -29,11 +29,15 @@ export const EditPage = () => {
     const feedbackValue = feedbackRef.current.value; // shuni destructure qilish kerak
     const reasonValue = reasonRef.current.value;
 
+    const months = ["UX", "UI", "Enhancement", "Bug", "All", "Feature"];
+    const random = Math.floor(Math.random() * months.length);
+    const featureRandom = (random, months[random])
+
     const editingFeedback = {
       id: Math.floor(Math.random() * 1000),
       feedback: feedbackValue,
       reason: reasonValue,
-      // type: featureRandom,
+      type: featureRandom,
       likes: 112,
       comments: 2,
     };

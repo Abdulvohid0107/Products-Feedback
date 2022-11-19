@@ -1,13 +1,13 @@
 import "./feedbacks.css";
 import { Feedback } from "../feedback/feedback";
-import { useContext } from "react";
-import { NewsContext } from "../../App";
+//  
+import { useNews } from "../hooks";
 
 export const Feedbacks = () => {
-  const { userfeedbacks } = useContext(NewsContext);
+  const { userfeedbacks } = useNews();
   return (
     <ul className="feedbacks">
-      {userfeedbacks.map((feedback) => (
+      {userfeedbacks?.map((feedback) => (
         <Feedback key={feedback.id} feedback={feedback} />
       ))}
     </ul>

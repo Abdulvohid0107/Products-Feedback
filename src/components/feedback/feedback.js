@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Feedback = (props) => {
-  const {feedback: {feedback, reason, type, comments, id}} = props
+  const {feedback: {title, description, type, commentsCount, id}} = props
   const [count, setCount] = useState(77)
   return (
     <li className="feedback">
@@ -15,12 +15,12 @@ export const Feedback = (props) => {
           <span id="clicks" >{count}</span>
         </button>
         <div className="feedback__content">
-          <Link to={`/comments-page/${id}`} className="feedback__item-title">{feedback}</Link>
-          <p className="feedback__reason">{reason}</p>
+          <Link to={`/comments-page/${id}`} className="feedback__item-title">{title}</Link>
+          <p className="feedback__reason">{description}</p>
           <p className="feedback__type">{type}</p>
         </div>
       </div>
-    <p className="feedback__comment">{comments}</p>
+    <p className="feedback__comment">{commentsCount}</p>
     </li>
   )
 }

@@ -19,7 +19,6 @@ export const AddPage = () => {
   const { userfeedbacks, setFeedbacks } = useContext(NewsContext);
 
   const months = ["UX", "UI", "Enhancement", "Bug", "All", "Feature"];
-
   const random = Math.floor(Math.random() * months.length);
   const featureRandom = (random, months[random])
 
