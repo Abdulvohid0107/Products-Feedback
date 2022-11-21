@@ -16,6 +16,9 @@ export const AuthApp = () => {
       .then((data) => {
         setFeedbacks(data);
       })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setLoading(false)
       })

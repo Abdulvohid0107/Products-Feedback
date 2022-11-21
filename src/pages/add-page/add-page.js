@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NewsContext } from "../../auth-app";
 import { Input } from "../../components";
@@ -8,19 +8,21 @@ import { CardICon } from "../../components/card-icon/card-icon";
 import { Container } from "../../components/container/container";
 import { GoBack } from "../../components/go-back/go-back";
 import { TitleAddEdit } from "../../components/title-add-edit/title-add-edit";
+import { API_URL } from "../../consts";
 import "./add-page.scss";
 
-
-export const AddPage = () => {
+export const AddPage = ({ loading }) => {
   const navigate = useNavigate();
 
   const feedbackRef = useRef();
   const reasonRef = useRef();
   const { userfeedbacks, setFeedbacks } = useContext(NewsContext);
 
+  const [isLoading, setLoading] = useState(false);
+
   const months = ["UX", "UI", "Enhancement", "Bug", "All", "Feature"];
   const random = Math.floor(Math.random() * months.length);
-  const featureRandom = (random, months[random])
+  const featureRandom = (random, months[random]);
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -34,9 +36,29 @@ export const AddPage = () => {
       type: featureRandom,
       likes: 112,
       commentsCount: 2,
+      status: "planned",
+      comments: []
     };
-    setFeedbacks([...userfeedbacks, newFeedback]);
-    navigate("/");
+
+    setLoading(true);
+    fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify(newFeedback),
+      headers: { "Content-type": "Application/json" },
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          return res.json();
+        }
+        return Promise.reject(res);
+      })
+      .then((data) => {
+        setFeedbacks([...userfeedbacks, newFeedback]);
+        navigate("/");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -48,14 +70,14 @@ export const AddPage = () => {
             <CardICon className="card-icon__plus" />
           </span>
           <TitleAddEdit>Create New Feedback</TitleAddEdit>
-          <form onSubmit={handleFormSubmit}>
+          <form loading={isLoading} onSubmit={handleFormSubmit}>
             <Input ref={feedbackRef} title />
             <Input ref={reasonRef} />
             <div className="add-edit-card__button-wrapper">
               <Button className="button__cancel" to={"/"}>
                 Cancel
               </Button>
-              <Button>Add Feedback</Button>
+              <Button disabled={loading}>Add Feedback</Button>
             </div>
           </form>
         </div>
