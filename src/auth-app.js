@@ -21,6 +21,7 @@ export const AuthApp = () => {
       })
   }, []);
 
+  
   if(isLoading) return <p>loading ...</p>
 
   return (
