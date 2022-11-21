@@ -11,18 +11,20 @@ import { AddComment } from "../../components/add-comment/add-comment";
 import { Button } from "../../components/button/button";
 import { NewsContext } from "../../auth-app";
 import { useContext } from "react";
+import { AuthContext } from "../../App";
 
 
 export const CommentsPage = () => {
   const { userfeedbacks } = useContext(NewsContext);
+  console.log(userfeedbacks);
   const { id } = useParams();
-  const feedbackItem = userfeedbacks.find((feedbackItem) => feedbackItem.id === +id)
-
+  const feedbackItem = userfeedbacks.find((feedbackItems) => feedbackItems.id === +id)
+  const {login} = useContext(AuthContext)
 
   return <Container className="user-comments-container">  
 
   <GoBack to={"/"}>
-    <Button to={"edit"} className="button__edit">Edit Feedback</Button>
+    <Button to={login ? "edit" : "login"} className="button__edit">Edit Feedback</Button>
   </GoBack>
 
   <div className="feedback feedbacks__comments-page">
@@ -30,15 +32,15 @@ export const CommentsPage = () => {
       <button className="feedback__button-like" type="button">
         <span className="feedback__button-span"></span>
         <img src={arrowlike} className="feedback__button-img" alt="" />
-        <span id="clicks" >{feedbackItem.count}65</span>
+        <span id="clicks" >{feedbackItem.likes}65</span>
       </button>
       <div className="feedback__content">
-        <Link to={`/comments-page/${id}`} className="feedback__item-title">{feedbackItem.feedback}</Link>
-        <p className="feedback__reason">{feedbackItem.reason}</p>
+        <Link to={`/comments-page/${id}`} className="feedback__item-title">{feedbackItem.title}</Link>
+        <p className="feedback__reason">{feedbackItem.description}</p>
         <p className="feedback__type">{feedbackItem.type}</p>
       </div>
     </div>
-    <p className="feedback__comment">{feedbackItem.comments}</p>
+    <p className="feedback__comment">{feedbackItem.commentsCount}</p>
   </div>
   <UserCommentSection>
     <CommentsItem></CommentsItem>

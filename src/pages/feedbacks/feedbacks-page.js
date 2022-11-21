@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AuthContext } from "../../App";
 import "../../assets/css/main.css";
 import "../../assets/css/normalize.css";
 import { Button } from "../../components/button";
@@ -14,6 +16,9 @@ import { Wrapper } from "../../components/wrapper/wrapper";
 import "../../data/feedbacks-data";
 
 export const FeedBacksPage = () => {
+
+  const {login} = useContext(AuthContext)
+
   return (
     <Container>
       <Wrapper>
@@ -27,7 +32,7 @@ export const FeedBacksPage = () => {
 
         <FeedbackSection>
           <FeedbackHeader>
-            <Button className="button__add" to={"add"}>
+            <Button className="button__add" to={login ? "add" : "login"}>
               + Add Feedback
             </Button>
           </FeedbackHeader>

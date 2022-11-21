@@ -8,8 +8,8 @@ export const TypesFilter = () => {
   return <div className="types-filter">
     <ul>
       <li className="">  
-          {typesFilter.map(typefilter => <Types typefilter={typefilter}></Types>)}
-      </li>
+          {typesFilter.map((typefilter, index) => <Types key={index} typefilter={typefilter}></Types>)}
+      </li> 
     </ul>
   </div>
 }

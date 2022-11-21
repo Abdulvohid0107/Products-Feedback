@@ -29,11 +29,11 @@ export const AddPage = () => {
 
     const newFeedback = {
       id: Math.floor(Math.random() * 1000),
-      feedback: feedbackValue,
-      reason: reasonValue,
+      title: feedbackValue,
+      description: reasonValue,
       type: featureRandom,
       likes: 112,
-      comments: 2,
+      commentsCount: 2,
     };
     setFeedbacks([...userfeedbacks, newFeedback]);
     navigate("/");

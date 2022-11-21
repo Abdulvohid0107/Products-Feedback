@@ -1,15 +1,15 @@
 import "./button.css"
 import { Link } from "react-router-dom";
 
-export const Button = ({children, className = "", to}) => {
+export const Button = ({children, className = "", to, onClick}) => {
   if (to) 
     return (
-      <Link className={"button " + className} to={to}>
+      <Link onClick={onClick} className={"button " + className} to={to}>
         {children}
       </Link>
     );
     return (
-      <button className={"button " + className}>
+      <button onClick={onClick} className={"button " + className}>
         {children}
       </button>
     )

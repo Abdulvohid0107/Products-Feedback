@@ -35,17 +35,16 @@ export const EditPage = () => {
 
     const editingFeedback = {
       id: Math.floor(Math.random() * 1000),
-      feedback: feedbackValue,
-      reason: reasonValue,
+      title: feedbackValue,
+      description: reasonValue,
       type: featureRandom,
       likes: 112,
-      comments: 2,
+      commentsCount: 2,
     };
 
     const editingItemIndex = userfeedbacks.findIndex(
       (feedbacksItem) => feedbacksItem.id === +id
     );
-
     setFeedbacks([
       ...userfeedbacks.slice(0, editingItemIndex),
       editingFeedback,
@@ -76,7 +75,7 @@ export const EditPage = () => {
           <span className="add-edit-card__span--pencil">
             <CardICon pencilicon className="card-icon__pencil" />
           </span>
-          <TitleAddEdit>Editing '{currentFeedbacksItem.feedback}'</TitleAddEdit>
+          <TitleAddEdit>Editing '{currentFeedbacksItem.title}'</TitleAddEdit>
           <form onSubmit={handleFormSubmit}>
             <Input
               ref={feedbackRef}

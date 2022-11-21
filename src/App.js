@@ -2,7 +2,6 @@ import { createContext, useState } from "react";
 import "./assets/css/main.css";
 import "./assets/css/normalize.css";
 import { AuthApp } from "./auth-app";
-import { UnAuthRoutes } from "./routes";
 
 export const AuthContext = createContext();
 
@@ -12,7 +11,8 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ login, setLogin }}>
-        {login ? <AuthApp/> : <UnAuthRoutes />}
+        {/* {login ? <AuthApp/> : <UnAuthRoutes />} */}
+        <AuthApp/>
         {/* <Routes /> */}
     </AuthContext.Provider>
   );

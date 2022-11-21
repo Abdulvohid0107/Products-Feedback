@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import { NotFound, FeedBacksPage, CommentsPage, AddPage, EditPage } from "../pages";
+import { NotFound, FeedBacksPage, CommentsPage, AddPage, EditPage, Login } from "../pages";
 
 const routes = [
   {
@@ -21,11 +21,19 @@ const routes = [
         path: "edit",
         element: <EditPage />,
       },
+      {
+        path: "login",
+        element: <Login/>
+      }
     ]
   },
   {
     path: "*",
     element: <NotFound/>
+  },
+  {
+    path: "login",
+    element: <Login/>
   }
 ];
 
