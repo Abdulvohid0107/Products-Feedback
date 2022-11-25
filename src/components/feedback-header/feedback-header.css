@@ -209,3 +209,9 @@
   }
 
 }
+
+@media only screen and (max-width: 760px) {
+  .site-header__title-wrapper{
+    gap: 7px;
+  }
+}

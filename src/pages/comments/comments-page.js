@@ -1,52 +1,72 @@
-import "./comments-page.css"
-import { useParams } from "react-router-dom"
-// import { feedbacks } from "../../data/feedbacks-data";
-import { Link } from "react-router-dom";
-import arrowlike from "../../assets/images/arrow-like.svg"
-import { Container } from "../../components/container/container";
-import { UserCommentSection } from "../../components/user-comment/user-comment-section";
-import { CommentsItem } from "../../components/comments-item/comments-item";
-import { GoBack } from "../../components/go-back/go-back";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../App";
+import arrowlike from "../../assets/images/arrow-like.svg";
 import { AddComment } from "../../components/add-comment/add-comment";
 import { Button } from "../../components/button/button";
-import { NewsContext } from "../../auth-app";
-import { useContext } from "react";
-import { AuthContext } from "../../App";
+import { CommentsItem } from "../../components/comments-item/comments-item";
+import { Container } from "../../components";
 
+import { GoBack } from "../../components";
+import { UserCommentSection } from "../../components/user-comment/user-comment-section";
+import { API_URL } from "../../consts";
+import "./comments-page.css";
 
 export const CommentsPage = () => {
-  const { userfeedbacks } = useContext(NewsContext);
-  console.log(userfeedbacks);
   const { id } = useParams();
-  const feedbackItem = userfeedbacks.find((feedbackItems) => feedbackItems.id === +id)
-  const {login} = useContext(AuthContext)
+  // const feedbackItem = userfeedbacks?.find(
+  //   (feedbackItem) => feedbackItem.id === +id
+  // );
+  const [currentFeedbacks, setCurrentFeedbacksItem] = useState();
+  const { login } = useContext(AuthContext);
 
-  return <Container className="user-comments-container">  
+  useEffect(() => {
+    fetch(API_URL + "/" + id)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        return Promise.reject(res);
+      })
+      .then((data) => {
+        setCurrentFeedbacksItem(data);
+      });
+  }, [id]);
 
-  <GoBack to={"/"}>
-    <Button to={login ? "edit" : "login"} className="button__edit">Edit Feedback</Button>
-  </GoBack>
+  if (!currentFeedbacks) {
+    // fetch bo'lgunicha qanchadur ham vaqt ketadi, o'sha vaqt mobaynida currentFeedbacks undefined'ga teng bo'ladi. sababi useState'ni boshlang'ich xolati undefined
+    return <p>Feedback not found </p>;
+  }
 
-  <div className="feedback feedbacks__comments-page">
-    <div className="feedback__content-wrapper">
-      <button className="feedback__button-like" type="button">
-        <span className="feedback__button-span"></span>
-        <img src={arrowlike} className="feedback__button-img" alt="" />
-        <span id="clicks" >{feedbackItem.likes}65</span>
-      </button>
-      <div className="feedback__content">
-        <Link to={`/comments-page/${id}`} className="feedback__item-title">{feedbackItem.title}</Link>
-        <p className="feedback__reason">{feedbackItem.description}</p>
-        <p className="feedback__type">{feedbackItem.type}</p>
+  return (
+    <Container className="user-comments-container">
+      <GoBack to={"/"}>
+        <Button to={login ? "edit" : "login"} className="button__edit">
+          Edit Feedback
+        </Button>
+      </GoBack>
+
+      <div className="feedback feedbacks__comments-page">
+        <div className="feedback__content-wrapper">
+          <button className="feedback__button-like" type="button">
+            <span className="feedback__button-span"></span>
+            <img src={arrowlike} className="feedback__button-img" alt="" />
+            <span id="clicks">{currentFeedbacks.likes}65</span>
+          </button>
+          <div className="feedback__content">
+            <Link to={`/comments-page/${id}`} className="feedback__item-title">
+              {currentFeedbacks.title}
+            </Link>
+            <p className="feedback__reason">{currentFeedbacks.description}</p>
+            <p className="feedback__type">{currentFeedbacks.type}</p>
+          </div>
+        </div>
+        <p className="feedback__comment">{currentFeedbacks.commentsCount}</p>
       </div>
-    </div>
-    <p className="feedback__comment">{feedbackItem.commentsCount}</p>
-  </div>
-  <UserCommentSection>
-    <CommentsItem></CommentsItem>
-  </UserCommentSection>
-  <AddComment>
-    
-  </AddComment>
-  </Container>
-}
+      <UserCommentSection>
+        <CommentsItem></CommentsItem>
+      </UserCommentSection>
+      <AddComment></AddComment>
+    </Container>
+  );
+};

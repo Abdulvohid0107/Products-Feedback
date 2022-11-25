@@ -1,14 +1,18 @@
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { NewsContext } from "../../auth-app";
 import { Input } from "../../components";
 import { AddEditCard } from "../../components/add-edit-card/add-edit-card";
-import { Button } from "../../components/button";
-import { CardICon } from "../../components/card-icon/card-icon";
-import { Container } from "../../components/container/container";
-import { GoBack } from "../../components/go-back/go-back";
-import { TitleAddEdit } from "../../components/title-add-edit/title-add-edit";
+import { Button } from "../../components";
+import { CardICon } from "../../components";
+import { Container } from "../../components";
+
+import { GoBack } from "../../components";
+import { TitleAddEdit } from "../../components";
+
 import { API_URL } from "../../consts";
+import { feedbacksActions } from "../../store";
+
 import "./add-page.scss";
 
 export const AddPage = ({ loading }) => {
@@ -16,7 +20,8 @@ export const AddPage = ({ loading }) => {
 
   const feedbackRef = useRef();
   const reasonRef = useRef();
-  const { userfeedbacks, setFeedbacks } = useContext(NewsContext);
+
+  const dispatch = useDispatch();
 
   const [isLoading, setLoading] = useState(false);
 
@@ -30,14 +35,13 @@ export const AddPage = ({ loading }) => {
     const reasonValue = reasonRef.current.value;
 
     const newFeedback = {
-      id: Math.floor(Math.random() * 1000),
       title: feedbackValue,
       description: reasonValue,
       type: featureRandom,
       likes: 112,
       commentsCount: 2,
       status: "planned",
-      comments: []
+      comments: [],
     };
 
     setLoading(true);
@@ -53,7 +57,7 @@ export const AddPage = ({ loading }) => {
         return Promise.reject(res);
       })
       .then((data) => {
-        setFeedbacks([...userfeedbacks, newFeedback]);
+        dispatch(feedbacksActions.addFeedbacksItem(data));
         navigate("/");
       })
       .finally(() => {

@@ -55,6 +55,13 @@
   }
 }
 
+@media only screen and (max-width: 804px) {
+  .button__add{
+    font-size: 13px !important;
+    padding: 8px 10px !important;
+  }
+}
+
 @media only screen and (max-width: 790px) {
   .button{
     padding: 10px 15px;

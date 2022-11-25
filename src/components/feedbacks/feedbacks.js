@@ -1,10 +1,9 @@
-import "./feedbacks.css";
+import { useSelector } from "react-redux";
 import { Feedback } from "../feedback/feedback";
-//  
-import { useNews } from "../hooks";
+import "./feedbacks.css";
 
 export const Feedbacks = () => {
-  const { userfeedbacks } = useNews();
+  const { userfeedbacks } = useSelector((state) => state.userfeedbacks);
   return (
     <ul className="feedbacks">
       {userfeedbacks?.map((feedback) => (

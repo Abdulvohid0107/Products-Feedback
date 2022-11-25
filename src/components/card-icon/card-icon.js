@@ -1,6 +1,5 @@
 import plus from "../../assets/images/plus.svg"
 import pencil from "../../assets/images/pencil.svg"
-// import { useRoutes } from "react-router-dom"
 
 export const CardICon = ({pencilicon, className = ""}) => {
   if (pencilicon) 

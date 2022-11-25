@@ -1,27 +1,44 @@
-import { useContext, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { NewsContext } from "../../auth-app";
-import { Input } from "../../components";
-import { AddEditCard } from "../../components/add-edit-card";
-import { Button } from "../../components/button";
-import { CardICon } from "../../components/card-icon/card-icon";
-import { Container } from "../../components/container/container";
-import { GoBack } from "../../components/go-back/go-back";
-import { TitleAddEdit } from "../../components/title-add-edit/title-add-edit";
+import { Input, GoBack, AddEditCard, Button, CardICon, Container, TitleAddEdit } from "../../components";
+import { API_URL } from "../../consts";
+import { feedbacksActions } from "../../store";
+
 
 export const EditPage = () => {
   const { id } = useParams();
-  const { userfeedbacks, setFeedbacks } = useContext(NewsContext);
+  const [currentFeedbacksItem, setCurrentFeedbacksItem] = useState();
+  const [isLoading, setLoading] = useState(false);
+  const [isEditing, setEditing] = useState(false);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const feedbackRef = useRef();
   const reasonRef = useRef();
 
-  const currentFeedbacksItem = userfeedbacks.find(
-    (feedbacksItem) => feedbacksItem.id === +id
-  );
-
+  useEffect(() => {
+    // buyoda fetch qilinayotganini sababi aynan o'sha tanlangan elementni olib kelish uchun
+    setLoading(true);
+    fetch(API_URL + "/" + id)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        return Promise.reject(res);
+      })
+      .then((data) => {
+        setCurrentFeedbacksItem(data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [id]); // id yozilganini sababi, agar ID o'zgaradigan bo'lsa boshidan fetch qiladi. Misol uchun 5-id li elementni
+  // ma'lumotlari fetch qilingan lekin, biza 6-id li elementga o'tib qoldik shu payit boshidan fetch bo'lib 6-id li elementni ma'lumotlarini
+  // chiqarib beradi
+  if (isLoading) return <p>Loading ...</p>;
   if (!currentFeedbacksItem) return <h1>Hech narsa topilmadi</h1>;
 
   const handleFormSubmit = (evt) => {
@@ -31,7 +48,7 @@ export const EditPage = () => {
 
     const months = ["UX", "UI", "Enhancement", "Bug", "All", "Feature"];
     const random = Math.floor(Math.random() * months.length);
-    const featureRandom = (random, months[random])
+    const featureRandom = (random, months[random]);
 
     const editingFeedback = {
       id: Math.floor(Math.random() * 1000),
@@ -42,28 +59,45 @@ export const EditPage = () => {
       commentsCount: 2,
     };
 
-    const editingItemIndex = userfeedbacks.findIndex(
-      (feedbacksItem) => feedbacksItem.id === +id
-    );
-    setFeedbacks([
-      ...userfeedbacks.slice(0, editingItemIndex),
-      editingFeedback,
-      ...userfeedbacks.slice(editingItemIndex + 1),
-    ]);
+    setEditing(true);
+    fetch(API_URL + "/" + id, {
+      // bu fetch aynan edit qilish uchun
+      method: "PUT",
+      body: JSON.stringify(editingFeedback),
+      headers: {
+        "Content-type": "Application/JSON",
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        return Promise.reject(res);
+      })
+      .then((data) => {
+        dispatch(feedbacksActions.editFeedbacksItem(data));
+        navigate("/");
+      })
+      .finally(() => {
+        setEditing(false);
+      });
 
     // deleting the feedbacks
-
-    navigate("/");
   };
 
   const handleDeleteClick = () => {
-    const btnIndex = userfeedbacks.findIndex(
-      (feedbacksItem) => feedbacksItem.id === +id
-    );
-    setFeedbacks([
-      ...userfeedbacks.slice(0, btnIndex),
-      ...userfeedbacks.slice(btnIndex + 1),
-    ]);
+    fetch(API_URL + "/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        return Promise.reject(res);
+      })
+      .then(() => {
+        dispatch(feedbacksActions.deleteFeedbacksItem(id));
+      });
     navigate("/");
   };
 
@@ -76,7 +110,7 @@ export const EditPage = () => {
             <CardICon pencilicon className="card-icon__pencil" />
           </span>
           <TitleAddEdit>Editing '{currentFeedbacksItem.title}'</TitleAddEdit>
-          <form onSubmit={handleFormSubmit}>
+          <form loading={isEditing} onSubmit={handleFormSubmit}>
             <Input
               ref={feedbackRef}
               title
@@ -87,7 +121,7 @@ export const EditPage = () => {
               {/* <Button className="button__delete">
                 Delete
               </Button> */}
-              <button  onClick={handleDeleteClick}>delete</button>
+              <button onClick={handleDeleteClick}>delete</button>
               <div className="add-edit-card__button-wrapper--edit">
                 <Button
                   to={"/"}
