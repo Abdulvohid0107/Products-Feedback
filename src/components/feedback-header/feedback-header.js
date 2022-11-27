@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import lamp from "../../assets/images/lamp.svg";
 import "./feedback-header.css";
 
 export const FeedbackHeader = ({ children }) => {
+
+  const {userfeedbacks} = useSelector((state) => state.userfeedbacks)
 
   return (
     <header className="site-header">
@@ -10,7 +13,7 @@ export const FeedbackHeader = ({ children }) => {
           <div className="site-header__title-wrapper">
             <img src={lamp} alt="Lamp" />
             <h3 className="site-header__title">
-              <span className="site-header__title-span">6</span>
+              <span className="site-header__title-span">{userfeedbacks?.length}</span>
               Suggestions
             </h3>
           </div>
@@ -46,9 +49,3 @@ export const FeedbackHeader = ({ children }) => {
     </header>
   );
 };
-
-// const elButton = document.querySelector(".site-header__sort-button")
-// console.log(elButton);
-// elButton.addEventListener("click", () => {
-//   elButton.classList.toggle("site-header__sort-button--opened")
-// })

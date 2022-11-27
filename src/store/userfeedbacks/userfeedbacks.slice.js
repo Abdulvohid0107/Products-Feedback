@@ -29,12 +29,11 @@ export const { actions: feedbacksActions, reducer: feedbacksReducer } =
       deleteFeedbacksItem: (state, { payload }) => {
         // actionni payloadiga id keladi
         const deletingItemIndex = state.userfeedbacks.findIndex(
-          (feedbacksItem) => feedbacksItem.id === payload
-          );
-        console.log(deletingItemIndex);
+          (feedbacksItem) => feedbacksItem.id === +payload
+        );
         state.userfeedbacks = [
           ...state.userfeedbacks.slice(0, deletingItemIndex),
-          ...state.userfeedbacks.sclice(deletingItemIndex + 1),
+          ...state.userfeedbacks.slice(deletingItemIndex + 1),
         ];
       },
       addFeedbacksItem: (state, { payload }) => {

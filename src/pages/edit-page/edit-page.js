@@ -1,10 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { Input, GoBack, AddEditCard, Button, CardICon, Container, TitleAddEdit } from "../../components";
+import {
+  Input,
+  GoBack,
+  AddEditCard,
+  Button,
+  CardICon,
+  Container,
+  TitleAddEdit,
+} from "../../components";
 import { API_URL } from "../../consts";
 import { feedbacksActions } from "../../store";
-
 
 export const EditPage = () => {
   const { id } = useParams();
@@ -13,7 +20,6 @@ export const EditPage = () => {
   const [isEditing, setEditing] = useState(false);
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const feedbackRef = useRef();
@@ -51,7 +57,6 @@ export const EditPage = () => {
     const featureRandom = (random, months[random]);
 
     const editingFeedback = {
-      id: Math.floor(Math.random() * 1000),
       title: feedbackValue,
       description: reasonValue,
       type: featureRandom,
@@ -97,6 +102,7 @@ export const EditPage = () => {
       })
       .then(() => {
         dispatch(feedbacksActions.deleteFeedbacksItem(id));
+        console.log(feedbacksActions.deleteFeedbacksItem(id));
       });
     navigate("/");
   };
