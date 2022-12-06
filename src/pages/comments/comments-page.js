@@ -14,9 +14,7 @@ import "./comments-page.css";
 
 export const CommentsPage = () => {
   const { id } = useParams();
-  // const feedbackItem = userfeedbacks?.find(
-  //   (feedbackItem) => feedbackItem.id === +id
-  // );
+
   const [currentFeedbacks, setCurrentFeedbacksItem] = useState();
   const { login } = useContext(AuthContext);
 
@@ -51,7 +49,7 @@ export const CommentsPage = () => {
           <button className="feedback__button-like" type="button">
             <span className="feedback__button-span"></span>
             <img src={arrowlike} className="feedback__button-img" alt="" />
-            <span id="clicks">{currentFeedbacks.likes}65</span>
+            <span id="clicks">{currentFeedbacks.likes}</span>
           </button>
           <div className="feedback__content">
             <Link to={`/comments-page/${id}`} className="feedback__item-title">

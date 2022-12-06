@@ -124,10 +124,10 @@ export const EditPage = () => {
             />
             <Input ref={reasonRef} />
             <div className="add-edit-card__all-btn-wrapper--edit">
-              {/* <Button className="button__delete">
+              <Button onClick={handleDeleteClick} className="button__delete">
                 Delete
-              </Button> */}
-              <button onClick={handleDeleteClick}>delete</button>
+              </Button>
+              {/* <button onClick={handleDeleteClick}>delete</button> */}
               <div className="add-edit-card__button-wrapper--edit">
                 <Button
                   to={"/"}

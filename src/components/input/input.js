@@ -1,13 +1,14 @@
 import { forwardRef } from "react";
 import "./input.scss";
 
-export const Input = forwardRef(({ title }, ref, ...rest) => {
+export const Input = forwardRef(({ title, defaultValue }, ref, ...rest) => {
   if (title)
     return (
       <label htmlFor="feedbackTitle" className="input__label">
         Feedback Title
         <span className="input__span">Add a short, descriptive headline</span>
-        <input
+        <input 
+        defaultValue={defaultValue}
           {...rest}
           type="text"
           id="feedbackTitle"

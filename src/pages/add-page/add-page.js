@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Input } from "../../components";
+import { Input, Select } from "../../components";
 import { AddEditCard } from "../../components/add-edit-card/add-edit-card";
 import { Button } from "../../components";
 import { CardICon } from "../../components";
@@ -20,24 +20,21 @@ export const AddPage = ({ loading }) => {
 
   const feedbackRef = useRef();
   const reasonRef = useRef();
+  const categoryRef = useRef()
 
   const dispatch = useDispatch();
-
   const [isLoading, setLoading] = useState(false);
-
-  const months = ["UX", "UI", "Enhancement", "Bug", "All", "Feature"];
-  const random = Math.floor(Math.random() * months.length);
-  const featureRandom = (random, months[random]);
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     const feedbackValue = feedbackRef.current.value;
     const reasonValue = reasonRef.current.value;
+    const categoryValue = categoryRef.current.value
 
     const newFeedback = {
       title: feedbackValue,
       description: reasonValue,
-      type: featureRandom,
+      type: categoryValue,
       likes: 112,
       commentsCount: 2,
       status: "planned",
@@ -76,6 +73,13 @@ export const AddPage = ({ loading }) => {
           <TitleAddEdit>Create New Feedback</TitleAddEdit>
           <form loading={isLoading} onSubmit={handleFormSubmit}>
             <Input ref={feedbackRef} title />
+            <label htmlFor="category" className="add-page__label">
+              Category
+              <span  className="add-page__label-span">
+                Choose a category for your feedback
+              </span>
+              <Select categoryRef={categoryRef} />
+            </label>
             <Input ref={reasonRef} />
             <div className="add-edit-card__button-wrapper">
               <Button className="button__cancel" to={"/"}>

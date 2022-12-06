@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// bozorga Reducer oqali ulab qo'yiladi
 // createSlice bizaga qaytaradigan narsalarni ichidan bizaga actions bilan reducers kerak bo'ladi va ularni destruction qilib olamiz
 export const { actions: feedbacksActions, reducer: feedbacksReducer } =
   createSlice({
