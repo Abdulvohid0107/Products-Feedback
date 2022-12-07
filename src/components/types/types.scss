@@ -1,3 +1,5 @@
+.types__label{}
+
 .types__list{
   list-style: none;
   padding: 0;
@@ -5,7 +7,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  column-gap: 14px  ;
+  column-gap: 14px;
 }
 
 .types__item{
@@ -17,10 +19,15 @@
   line-height: 19px;
   color: #4661E6;
   transition: 0.3s ease all;
+
+  &:checked{
+    background-color: red;
+  }
 }
 
 .types__item:hover{
   background: #CFD7FF;
+  
 }
 
 .types__item--enhancement{

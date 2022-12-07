@@ -1,0 +1,28 @@
+.types-filter{
+  max-width: 255px;
+  padding: 24px;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.types-filter__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.types-filter__item{
+  display: inline-block;
+  margin-right: 8px;
+  position: relative;
+
+  &:nth-child(4n) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.checked-item{
+  margin-bottom: 20px;
+}

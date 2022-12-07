@@ -1,9 +1,9 @@
-import "./types.css";
+import "./types.scss";
 
 export const Types = ({ typefilter }) => {
   return (
-    <label htmlFor={typefilter}>
-      <input type="radio" id={typefilter} name="radio" />
+    <label className="types__label" htmlFor={typefilter}>
+      <input className="types__input visually-hidden" type="radio" id={typefilter} name="radio" />
       <span className="types__item">{typefilter}</span>
     </label>
   );

@@ -9,6 +9,7 @@ import {
   CardICon,
   Container,
   TitleAddEdit,
+  Select,
 } from "../../components";
 import { API_URL } from "../../consts";
 import { feedbacksActions } from "../../store";
@@ -21,9 +22,10 @@ export const EditPage = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const feedbackRef = useRef();
   const reasonRef = useRef();
+  const categoryRef = useRef();
+  const statusRef = useRef()
 
   useEffect(() => {
     // buyoda fetch qilinayotganini sababi aynan o'sha tanlangan elementni olib kelish uchun
@@ -49,18 +51,17 @@ export const EditPage = () => {
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    const feedbackValue = feedbackRef.current.value; // shuni destructure qilish kerak
+    const feedbackValue = feedbackRef.current.value;
     const reasonValue = reasonRef.current.value;
-
-    const months = ["UX", "UI", "Enhancement", "Bug", "All", "Feature"];
-    const random = Math.floor(Math.random() * months.length);
-    const featureRandom = (random, months[random]);
+    const categoryValue = categoryRef.current.value
+    const statusValue = statusRef.current.value
 
     const editingFeedback = {
       title: feedbackValue,
       description: reasonValue,
-      type: featureRandom,
+      type: categoryValue,
       likes: 112,
+      status: statusValue,
       commentsCount: 2,
     };
 
@@ -120,14 +121,36 @@ export const EditPage = () => {
             <Input
               ref={feedbackRef}
               title
-              defaultFeedbackValue={currentFeedbacksItem.feedback}
+              defaultValue={currentFeedbacksItem.title}
             />
+            <label htmlFor="category" className="add-page__label">
+              Category
+              <span className="add-page__label-span">
+                Choose a category for your feedback
+              </span>
+              <Select
+                defaultValue={currentFeedbacksItem.type}
+                categoryRef={categoryRef}
+              />
+            </label>
+
+            <label htmlFor="category" className="add-page__label">
+              Update Status
+              <span className="add-page__label-span">
+                Change feedback state
+              </span>
+              <select ref={statusRef} name="status" id="status" defaultValue={currentFeedbacksItem.status} className="add-page__select">
+                <option  className="add-page__option" value="suggestion">Suggestion</option>
+                <option  className="add-page__option" value="planned">Planned</option>
+                <option  className="add-page__option" value="in-progress">In-Progress</option>
+                <option  className="add-page__option" value="live">Live</option>
+              </select>
+            </label>
             <Input ref={reasonRef} />
             <div className="add-edit-card__all-btn-wrapper--edit">
               <Button onClick={handleDeleteClick} className="button__delete">
                 Delete
               </Button>
-              {/* <button onClick={handleDeleteClick}>delete</button> */}
               <div className="add-edit-card__button-wrapper--edit">
                 <Button
                   to={"/"}

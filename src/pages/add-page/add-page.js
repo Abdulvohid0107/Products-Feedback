@@ -6,13 +6,10 @@ import { AddEditCard } from "../../components/add-edit-card/add-edit-card";
 import { Button } from "../../components";
 import { CardICon } from "../../components";
 import { Container } from "../../components";
-
 import { GoBack } from "../../components";
 import { TitleAddEdit } from "../../components";
-
 import { API_URL } from "../../consts";
 import { feedbacksActions } from "../../store";
-
 import "./add-page.scss";
 
 export const AddPage = ({ loading }) => {

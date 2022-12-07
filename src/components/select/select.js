@@ -1,7 +1,7 @@
 
-export const Select = ({categoryRef}) => {
+export const Select = ({categoryRef, defaultValue}) => {
   return (
-      <select ref={categoryRef} name="category" id="category" className="add-page__select">
+      <select ref={categoryRef} name="category" id="category" defaultValue={defaultValue} className="add-page__select">
         <option value="Feature" className="add-page__option">
           Feature
         </option>
