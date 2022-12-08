@@ -1,16 +1,31 @@
-.types__label{}
+  
 
-.types__list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  column-gap: 14px;
+.types__label {
+  position: absolute; 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
 }
 
-.types__item{
+.types__input:checked + .types__span {
+  background: #4661E6;
+  border-radius: 10px;
+  padding: 6px 15px;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+  color: #FFFFFF;
+  transition: 0.3s ease all;
+
+  &:hover {
+    background: #CFD7FF;
+  }
+}
+
+.types__span {
   background: #F2F4FF;
   border-radius: 10px;
   padding: 6px 15px;
@@ -19,17 +34,8 @@
   line-height: 19px;
   color: #4661E6;
   transition: 0.3s ease all;
-
-  &:checked{
-    background-color: red;
-  }
-}
-
-.types__item:hover{
-  background: #CFD7FF;
   
-}
-
-.types__item--enhancement{
-  margin-right: 14px;
+  &:hover {
+    background: #CFD7FF;
+  }
 }

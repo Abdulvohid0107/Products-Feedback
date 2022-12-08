@@ -9,7 +9,7 @@ export const TypesFilter = () => {
       <ul className="types-filter__list">
         {typesFilter.map((typefilter, index) => (
           <li className="types-filter__item">
-            <Types key={index} typefilter={typefilter}></Types>
+            <Types key={typesFilter.length} typefilter={typefilter}></Types>
           </li>
         ))}
       </ul>

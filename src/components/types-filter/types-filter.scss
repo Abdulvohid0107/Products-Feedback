@@ -23,6 +23,13 @@
   }
 }
 
-.checked-item{
-  margin-bottom: 20px;
+@media only screen and (max-width: 700px) {
+  .types-filter {
+    // flex-grow: 2;
+    padding-right: 18px;
+  }
+
+  .types-filter__item:nth-child(5n) {
+    margin-right: 0;
+  }
 }

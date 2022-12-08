@@ -11,6 +11,7 @@ import { FeedbackRoadmap } from "../../components/feedbacks-roadmap/feedback-roa
 import { FeedbackSection } from "../../components/feedbacks-section/feedback-section";
 import { Feedbacks } from "../../components/feedbacks/feedbacks";
 import { Intro } from "../../components/intro/intro";
+import { NoFeedback } from "../../components/no-feedback/no-feedback";
 import { Roadmap } from "../../components/roadmap/roadmap";
 import { TypesFilter } from "../../components/types-filter/types-filter";
 import { Types } from "../../components/types/types";
@@ -61,6 +62,7 @@ export const FeedBacksPage = () => {
             </Button>
           </FeedbackHeader>
           <Feedbacks></Feedbacks>
+          {userfeedbacks?.length === 0 ? <NoFeedback /> : ""}
         </FeedbackSection>
       </Wrapper>
     </Container>

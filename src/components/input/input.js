@@ -7,8 +7,8 @@ export const Input = forwardRef(({ title, defaultValue }, ref, ...rest) => {
       <label htmlFor="feedbackTitle" className="input__label">
         Feedback Title
         <span className="input__span">Add a short, descriptive headline</span>
-        <input 
-        defaultValue={defaultValue}
+        <input
+          defaultValue={defaultValue}
           {...rest}
           type="text"
           id="feedbackTitle"
@@ -28,6 +28,7 @@ export const Input = forwardRef(({ title, defaultValue }, ref, ...rest) => {
         id="feedbackTitle2"
         ref={ref}
         className="input__input input__feedback-detail"
+        defaultValue={defaultValue}
       />
     </label>
   );

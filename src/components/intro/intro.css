@@ -53,5 +53,12 @@
 @media only screen and (max-width: 700px) {
   .intro{
     margin-bottom: 0;
+    padding: 103px 46px 24px 24px;
+    /* flex-grow: 1; */
+  }
+
+  .intro__mentor{
+    font-size: 20px;
+    font-weight: 700;
   }
 }

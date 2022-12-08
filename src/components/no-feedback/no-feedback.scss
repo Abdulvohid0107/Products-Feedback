@@ -1,0 +1,26 @@
+.no-feedback {
+  margin: 0 auto;
+  max-width: 410px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.no-feedback__title {
+  margin: 54px 0 16px;
+  color: #3A4374;
+  font-size: 24px;
+}
+
+.no-feedback__text {
+  margin: 0;
+  color:#647196;
+  text-align: center;
+  line-height: 24px;
+}
+
+.no-feedback__button{
+  text-decoration: none;
+  margin-top: 48px;
+}

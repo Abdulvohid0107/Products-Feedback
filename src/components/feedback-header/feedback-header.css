@@ -215,3 +215,18 @@
     gap: 7px;
   }
 }
+
+@media only screen and (max-width: 750px) {
+  .site-header__title-sort-wrapper{
+    gap: 10px;
+  }
+
+  .site-header__sort-title{
+    font-size: 12px;
+  }
+
+  .site-header__sort{
+    font-size: 12px;
+  }
+}
+

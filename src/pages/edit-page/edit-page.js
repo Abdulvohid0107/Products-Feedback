@@ -146,7 +146,7 @@ export const EditPage = () => {
                 <option  className="add-page__option" value="live">Live</option>
               </select>
             </label>
-            <Input ref={reasonRef} />
+            <Input ref={reasonRef} defaultValue={currentFeedbacksItem.description} />
             <div className="add-edit-card__all-btn-wrapper--edit">
               <Button onClick={handleDeleteClick} className="button__delete">
                 Delete
