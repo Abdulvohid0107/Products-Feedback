@@ -133,6 +133,7 @@
   letter-spacing: -0.222222px;
   color: #3A4374;
   position: relative;
+  margin-left: 25px;
 }
 
 .feedback__comment::before{

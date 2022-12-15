@@ -230,3 +230,37 @@
   }
 }
 
+@media only screen and (max-width: 700px) {
+  .site-header__title,
+  .site-header__title-span{
+    font-size: 18px;
+  }
+
+  .site-header__sort-title,
+  .site-header__sort{
+    font-size: 14px;
+  }
+
+  .site-header__sort-title{
+    margin-right: 13px;
+  }
+
+  .site-header__title-wrapper{
+    gap: 16px;
+  }
+
+  .site-header__title-sort-wrapper{
+    gap: 38px;
+  }
+}
+
+
+@media only screen and (max-width: 580px) {
+  .site-header__title-wrapper{
+    gap: 10px;
+  }
+
+  .site-header__title-sort-wrapper{
+    gap: 15px;
+  }
+}
