@@ -3,7 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { AuthContext } from "../../App";
 import "../../assets/css/main.css";
 import "../../assets/css/normalize.css";
-import { Button, Container, FeedbackRoadmap, Intro, TypesFilter, Types, Roadmap } from "../../components";
+import {
+  Button,
+  Container,
+  FeedbackRoadmap,
+  Intro,
+  TypesFilter,
+  Types,
+  Roadmap,
+} from "../../components";
 import { FeedbackHeader } from "../../components/feedback-header/feedback-header";
 import { FeedbackSection } from "../../components/feedbacks-section/feedback-section";
 import { Feedbacks } from "../../components/feedbacks/feedbacks";
@@ -33,6 +41,7 @@ export const FeedBacksPage = () => {
           dispatch(feedbacksActions.setError(err));
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) return <p>loading ...</p>;
